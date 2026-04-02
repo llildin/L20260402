@@ -12,34 +12,24 @@ int main()
 	cin >> Count;
 
 	bit64* InNumber = new bit64[Count];
-	bit64* OutNumber = new bit64[Count];
+	bit64 OutNumber;
 
 	for (int i = 0; i < Count; i++)
 	{
+		OutNumber = 1;
 		cin >> InNumber[i];
-		OutNumber[i] = 1;
 
-		for (; (InNumber[i] / OutNumber[i]) >= 1;)
+		while (InNumber[i] > OutNumber)
 		{
-			if (InNumber[i] == OutNumber[i])
-			{
-				break;
-			}
-			OutNumber[i] *= 2;
+			OutNumber = OutNumber << 1;
 		}
-	}
-
-	for (int i = 0; i < Count; i++)
-	{
-		Result = Result ^ OutNumber[i];
+		Result = Result ^ OutNumber;
 	}
 
 	cout << Result;
 
 	delete[] InNumber;
 	InNumber = nullptr;
-	delete[] OutNumber;
-	OutNumber = nullptr;
 
 	return 0;
 }
