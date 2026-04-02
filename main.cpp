@@ -29,7 +29,6 @@ int main()
 
 	for (int i = 0; i < Count; i++)
 	{
-		cout << OutNumber[i] << endl;
 		Result = Result ^ OutNumber[i];
 	}
 
