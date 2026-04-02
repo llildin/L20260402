@@ -1,30 +1,32 @@
 #include <iostream>
 using namespace std;
 
-using byte = unsigned long long;
+using bit64 = unsigned long long;
 
 int main()
 {
 	int Count = 0;
-	byte Result = 0;
+	bit64 Result = 0;
 
 	cout << "Number Count : ";
 	cin >> Count;
 
-	byte* InNumber = new byte[Count];
-	byte* OutNumber = new byte[Count];
+	bit64* InNumber = new bit64[Count];
+	bit64* OutNumber = new bit64[Count];
 
 	for (int i = 0; i < Count; i++)
 	{
 		cin >> InNumber[i];
 		OutNumber[i] = 1;
 
-		for (; InNumber[i] > 1;)
+		for (; (InNumber[i] / OutNumber[i]) >= 1;)
 		{
-			InNumber[i] /= 2;
+			if (InNumber[i] == OutNumber[i])
+			{
+				break;
+			}
 			OutNumber[i] *= 2;
 		}
-		OutNumber[i] *= 2;
 	}
 
 	for (int i = 0; i < Count; i++)
